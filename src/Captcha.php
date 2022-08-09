@@ -19,10 +19,10 @@ class Captcha
     private bool $unsigned = true;
 
 
-    public function __construct($width = 170, $height = 100)
+    public function __construct(int $width = 170,int $height = 100,?array $fonts = null)
     {
-        $this->image = new Image();
 
+        $this->image = new Image(...func_get_args());
     }
 
     /**

@@ -13,18 +13,20 @@ class Image
 
     public array $bgColor;
 
+    public ?Font $font;
 
     /**
      * @throws \Exception
      */
-    public function __construct(protected ?Font $font = null,
-                                public int      $width = 170,
-                                public int      $height = 100)
+    public function __construct(public int $width = 170,
+                                public int $height = 100,
+                                ?array     $fonts = null)
     {
-        $this->font ??= new Font();
 
-        if (!extension_loaded('GD'))
-            throw new \Exception("GD library is disable ! ");
+        $this->font = new Font($fonts);
+
+
+        $this->checkRequirements();
 
 
         $this->image = imagecreatetruecolor($width, $height);
@@ -66,6 +68,15 @@ class Image
     {
         $rgb = $this->randArray(90, 200);
         return imagecolorallocatealpha($this->image, $rgb[0], $rgb[1], $rgb[2], 5);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function checkRequirements(): void
+    {
+        if (!extension_loaded('GD'))
+            throw new \Exception("GD library is disable ! ");
     }
 
 

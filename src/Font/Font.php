@@ -6,8 +6,9 @@ class Font
 {
 
     public function __construct(
-        public array $fonts = [__DIR__.'/../../fonts/3dumb.ttf'])
+        public ?array $fonts)
     {
+        $this->fonts ??=  [__DIR__.'/../../fonts/3dumb.ttf'];
     }
 
 
