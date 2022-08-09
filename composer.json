@@ -1,0 +1,21 @@
+{
+    "name": "mkhab7/math-captcha",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mkhab7\\MathCaptcha\\": "src/"
+        },
+        "files": ["src/helpers.php"]
+    },
+    "authors": [
+        {
+            "name": "solid",
+            "email": "myappgo123@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "ext-gd": "*"
+    }
+}
