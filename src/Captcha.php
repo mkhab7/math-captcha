@@ -19,7 +19,7 @@ class Captcha
     private bool $unsigned = true;
 
 
-    public function __construct()
+    public function __construct($width = 170, $height = 100)
     {
         $this->image = new Image();
 
@@ -48,7 +48,7 @@ class Captcha
             ->write($numbers[0], $size[0], $angle[0], round($width / 34.2), $y[0])
             ->write($operator, $size[1], $angle[1], round($width / 3.7), round($height / 1.42))
             ->write($numbers[1], $size[2], $angle[2], round($width / 2.26), $y[1])
-            ->write("= ?", $size[3], $angle[3], round($width / 1.45), round($height / 1.42));
+            ->write("= ?", $size[3], $angle[3], round($width / 1.475), round($height / 1.42));
 
         return new Response($this->image, $operator, $numbers);
     }
