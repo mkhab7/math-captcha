@@ -20,6 +20,9 @@ class Captcha
         $withBgColor = true;
 
 
+    /**
+     * @throws \Exception
+     */
     public function __construct(int $width = 170, int $height = 100, ?array $fonts = null)
     {
         $this->image = new Image(...func_get_args());
