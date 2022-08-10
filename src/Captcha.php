@@ -12,16 +12,19 @@ class Captcha
     use Helpers;
 
 
-    protected Image $image;
+    public Image $image;
 
     private array $operators = ['+', '-'];
 
-    private bool $unsigned = true;
+    private bool $unsigned = true,
+        $withBgColor = true;
 
 
-    public function __construct(int $width = 170,int $height = 100,?array $fonts = null)
+    /**
+     * @throws \Exception
+     */
+    public function __construct(int $width = 170, int $height = 100, ?array $fonts = null)
     {
-
         $this->image = new Image(...func_get_args());
     }
 
@@ -43,8 +46,9 @@ class Captcha
         extract($this->makeQuestion());
 
 
+        $this->withBgColor && $this->image->applyBackgroundColor();
+
         $this->image
-            ->applyBackgroundColor()
             ->write($numbers[0], $size[0], $angle[0], round($width / 34.2), $y[0])
             ->write($operator, $size[1], $angle[1], round($width / 3.7), round($height / 1.42))
             ->write($numbers[1], $size[2], $angle[2], round($width / 2.26), $y[1])
@@ -81,8 +85,21 @@ class Captcha
         return $this;
     }
 
+    /**
+     * @param $numbers
+     * @return bool
+     */
     public function isUnsigned($numbers): bool
     {
         return ($numbers[0] - $numbers[1]) > 0;
+    }
+
+    /**
+     * @return $this
+     */
+    public function withoutBgColor(): self
+    {
+        $this->withBgColor = false;
+        return $this;
     }
 }
