@@ -30,7 +30,10 @@ class Image
 
 
         $this->image = imagecreatetruecolor($width, $height);
-        $this->bgColor = ['0', $this->randArray(40, 255)];
+        $this->bgColor = [
+            $this->randArray(0, 0),
+            $this->randArray(40, 255)
+        ];
     }
 
     public function write($text, $size, $angle, $x, $y): static
@@ -53,11 +56,8 @@ class Image
         for ($i = 0; $i < $this->width; $i++) {
             for ($j = 0; $j < $this->height; $j++) {
                 $bg = $this->bgColor[array_rand($this->bgColor)];
-                if ($bg == 0) {
-                    $color = imagecolorallocatealpha($this->image, $bg, $bg, $bg, rand(100, 127));
-                } else {
-                    $color = imagecolorallocatealpha($this->image, $bg[0], $bg[1], $bg[2], rand(100, 127));
-                }
+                $color = imagecolorallocatealpha($this->image, $bg[0], $bg[1], $bg[2], rand(100, 127));
+
                 imagesetpixel($this->image, $i, $j, $color);
             }
         }
