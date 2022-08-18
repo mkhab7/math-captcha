@@ -7,6 +7,6 @@ captcha()->generate()->display()
 
 
 ```php
-captcha()->withoutBgColor->generate()->display()
+captcha()->withoutBgColor()->generate()->display()
 ```
 ![](https://github.com/mkhab7/math-captcha/blob/main/examples/without-bg.png?raw=true)
