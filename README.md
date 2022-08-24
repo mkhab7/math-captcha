@@ -10,3 +10,10 @@ captcha()->generate()->display()
 captcha()->withoutBgColor()->generate()->display()
 ```
 ![](https://github.com/mkhab7/math-captcha/blob/main/examples/without-bg.png?raw=true)
+
+
+### install via composer : 
+
+```bash 
+composer require mkhab7/math-captcha
+```
