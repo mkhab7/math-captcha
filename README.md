@@ -1,7 +1,9 @@
 # math-captcha
 A package for generating math captcha
 ```php
-captcha()->generate()->display()
+$captcha  = captcha()->generate()->display();
+$answer = $captcha->answer();
+$captcha->display();
 ```
 ![](https://github.com/mkhab7/math-captcha/blob/main/examples/with-bg.png?raw=true)
 
