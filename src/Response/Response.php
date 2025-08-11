@@ -9,7 +9,7 @@ class Response
     private int $answer;
 
 
-    public function __construct(protected Image $image,
+    public function __construct(public Image $image,
         protected string $operator,
         protected array $numbers)
     {
